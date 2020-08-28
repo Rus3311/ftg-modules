@@ -100,4 +100,4 @@ async def imdb(e):
         except IndexError:
             await e.edit("Хьюстон, результатов не найдено. Пожалуйста, введи ** Правильное название фильма / сериала **")
         except Exception as err:
-            await e.edit("Хьюстон, произошла некая ошибка:- "+str(err))
+            await e.edit("Хьюстон произошла некая ошибка:- "+str(err))
