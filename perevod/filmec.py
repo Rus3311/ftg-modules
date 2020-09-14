@@ -24,7 +24,7 @@ class MusicMod(loader.Module):
 		async with message.client.conversation('music') as conv:
 			try:
 				response = conv.wait_event(events.NewMessage(incoming=True,
-				                                             from_users=895938220))
+				                                             from_users=678543122))
 				if media:
 					await message.client.send_file('@music', user_msg)
 				else:
