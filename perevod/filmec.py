@@ -1,3 +1,4 @@
+#by @laciamemeframe
 
 from telethon import events
 from telethon.errors.rpcerrorlist import YouBlockedUserError
@@ -5,13 +6,13 @@ from .. import loader, utils
 
 
 def register(cb):
-	cb(Lines50Mod())
+	cb(nudes2dMod())
 
 
-class Lines50Mod(loader.Module):
-	"""Draw photo with 50 lines via @Lines50Bot"""
+class nudes2dMod(loader.Module):
+	"""Хентай картинки из @murglar_bot"""
 
-	strings = {'name': 'Lines50'}
+	strings = {'name': 'Хентай'}
 
 	def __init__(self):
 		self.name = self.strings['name']
@@ -23,35 +24,45 @@ class Lines50Mod(loader.Module):
 		self._client = client
 		self.me = await client.get_me()
 
-	async def linescmd(self, message):
-		""".lines <reply to photo>"""
-		
-		reply = await message.get_reply_message()
-		if not reply:
-			await message.edit("reply to photo")
-			return
-		try:
-			photo = reply.media.photo
-		except:
-			await message.edit("reply to photo only")
-			return
-		
-		
-				
-				
-		chat = '@Lines50Bot'
-		await message.edit('... <code>in process...</code>')
-		async with message.client.conversation(chat) as conv:
-			try:
-				response = conv.wait_event(events.NewMessage(incoming=True, from_users=678543122))
-				
-				await message.client.send_file(chat, photo)
-				
-				response = await response
-			except YouBlockedUserError:
-				await message.reply('<code>Unblock</code> ...')
-				return
-
-			await message.delete()
-			await message.client.send_file(message.to_id, response.media)
-			
+	async def hentaicmd(self, event):
+         """.hentai"""
+         user_msg = """{}""".format(utils.get_args_raw(event))
+         global text
+         text = False
+         if event.fwd_from:
+             return
+             self_mess = True
+             if not user_msg:
+                 return 
+         chat = '@playplay_bot'
+         await event.edit('<code>Обработка</code>')
+         async with event.client.conversation(chat) as conv:
+             try:
+                 response = conv.wait_event(events.NewMessage(incoming=True,
+                                                              from_users=678543122))
+                 await event.client.send_message(chat, '/muz ' +user_msg)
+                 response = await response
+             except YouBlockedUserError:
+                 await event.reply('<code>Разблокируй @playplay_bot</code>')
+                 return
+             await event.delete()
+             await event.client.send_file(event.to_id, response.media)
+    
+	async def nudesgirlcmd(self, event):
+         """.hentai"""
+         user_msg = """{}""".format(utils.get_args_raw(event))
+         global text
+         text = False
+         if event.fwd_from:
+             return
+             self_mess = True
+             if not user_msg:
+                 return 
+         chat = '@playplay_bot'
+         await event.edit('<code>Обработка</code>')
+         async with event.client.conversation(chat) as conv:
+             try:
+                 response = conv.wait_event(events.NewMessage(incoming=True,
+                                                              from_users=678543122))
+         
+       
