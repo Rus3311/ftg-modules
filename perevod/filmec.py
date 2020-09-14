@@ -31,7 +31,7 @@ class MusicMod(loader.Module):
 					await message.client.send_message('music', user_msg)
 				response = await response
 			except YouBlockedUserError:
-				await message.reply('<code>Разблокируй </code> music')
+				await message.reply('<code>Разблокируй </code> music.')
 				return
 			await message.delete()
 			if reply_to:
