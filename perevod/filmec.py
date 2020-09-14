@@ -1,40 +1,57 @@
-from .. import loader, utils
+
 from telethon import events
 from telethon.errors.rpcerrorlist import YouBlockedUserError
-@loader.tds
-class MusicMod(loader.Module):
-	strings = {"name": "Music"}
-	@loader.owner
-	async def hastecmd(self, message):
-		media=False
-		reply_to=False
-		user_msg=f"""{utils.get_args_raw(message)}"""
-		reply=await message.get_reply_message()
-		if reply:
-			if reply.media:
-				user_msg=reply.media
-				media=True
-				reply_to=True
-			else:
-				user_msg = f"""{reply.text}""" 
-				reply_to=True
-		else:
-			pass
-		await message.edit('<code>senator_ice</code>')
-		async with message.client.conversation('music') as conv:
+from .. import loader, utils
+
+
+def register(cb):
+	cb(Lines50Mod())
+
+
+class Lines50Mod(loader.Module):
+	"""Draw photo with 50 lines via @Lines50Bot"""
+
+	strings = {'name': 'Lines50'}
+
+	def __init__(self):
+		self.name = self.strings['name']
+		self._me = None
+		self._ratelimit = []
+
+	async def client_ready(self, client, db):
+		self._db = db
+		self._client = client
+		self.me = await client.get_me()
+
+	async def linescmd(self, message):
+		""".lines <reply to photo>"""
+		
+		reply = await message.get_reply_message()
+		if not reply:
+			await message.edit("reply to photo")
+			return
+		try:
+			photo = reply.media.photo
+		except:
+			await message.edit("reply to photo only")
+			return
+		
+		
+				
+				
+		chat = '@Lines50Bot'
+		await message.edit('... <code>in process...</code>')
+		async with message.client.conversation(chat) as conv:
 			try:
-				response = conv.wait_event(events.NewMessage(incoming=True,
-				                                             from_users=678543122))
-				if media:
-					await message.client.send_file('@music', user_msg)
-				else:
-					await message.client.send_message('music', user_msg)
+				response = conv.wait_event(events.NewMessage(incoming=True, from_users=678543122))
+				
+				await message.client.send_file(chat, photo)
+				
 				response = await response
 			except YouBlockedUserError:
-				await message.reply('<code>Разблокируй </code> music.')
+				await message.reply('<code>Unblock</code> ...')
 				return
+
 			await message.delete()
-			if reply_to:
-				await message.client.send_message(message.to_id,response.message,reply_to=reply.id)
-			else:
-				await message.client.send_message(message.to_id,response.message)
+			await message.client.send_file(message.to_id, response.media)
+			
