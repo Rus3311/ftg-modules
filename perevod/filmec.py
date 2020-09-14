@@ -48,21 +48,4 @@ class nudes2dMod(loader.Module):
              await event.delete()
              await event.client.send_file(event.to_id, response.media)
     
-	async def nudesgirlcmd(self, event):
-         """.hentai"""
-         user_msg = """{}""".format(utils.get_args_raw(event))
-         global text
-         text = False
-         if event.fwd_from:
-             return
-             self_mess = True
-             if not user_msg:
-                 return 
-         chat = '@playplay_bot'
-         await event.edit('<code>Обработка</code>')
-         async with event.client.conversation(chat) as conv:
-             try:
-                 response = conv.wait_event(events.NewMessage(incoming=True,
-                                                              from_users=678543122))
-         
-       
+	
