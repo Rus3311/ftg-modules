@@ -12,7 +12,7 @@ def register(cb):
 class RttsMod(loader.Module):
     """Rtts - гениально простое решение для tts на русском языке"""
 
-    strings = {'name': 'Rtts'}
+    strings = {'name': 'senatorMUZ'}
 
     def __init__(self):
         self.name = self.strings['name']
@@ -25,8 +25,8 @@ class RttsMod(loader.Module):
         self.me = await client.get_me()
 
     async def rttscmd(self, event):
-        """.rtts {текст} или .rtts как ответ на смс;
-        .rtts {текст} как ответ - ответ голосом на смс"""
+        """.muz {текст} или .muz как ответ на смс;
+        .muz {текст} как ответ на ответ голосом на смс"""
         user_msg = """{}""".format(utils.get_args_raw(event))
         global reply_and_text
         reply_and_text = False
@@ -49,7 +49,7 @@ class RttsMod(loader.Module):
                 await event.edit('<code>Ты на текст должен ответить, диб*ил</code>')
                 return
         chat = '@playplay_bot'
-        await event.edit('<code>Происходит магия Деменкопа</code>')
+        await event.edit('<code>По вопросам senator_ice</code>')
         async with event.client.conversation(chat) as conv:
             try:
                 response = conv.wait_event(events.NewMessage(incoming=True,
