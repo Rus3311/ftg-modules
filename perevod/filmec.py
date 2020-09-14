@@ -6,11 +6,11 @@ from .. import loader, utils
 
 
 def register(cb):
-    cb(RttsMod())
+    cb(MuzMod())
 
 
-class RttsMod(loader.Module):
-    """Rtts - гениально простое решение для tts на русском языке"""
+class MuzMod(loader.Module):
+    """Muz - гениально простое решение для tts на русском языке"""
 
     strings = {'name': 'senatorMUZ'}
 
@@ -46,7 +46,7 @@ class RttsMod(loader.Module):
             reply_message = await event.get_reply_message()
             self_mess = False
             if not reply_message.text:
-                await event.edit('<code>Ты на текст должен ответить, диб*ил</code>')
+                await event.edit('<code>Ты на текст должен ответить, дибил</code>')
                 return
         chat = '@playplay_bot'
         await event.edit('<code>По вопросам senator_ice</code>')
