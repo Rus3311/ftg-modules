@@ -1,18 +1,17 @@
 """Get details of a series or movie.
 Command: 
 .tv <название сериала>
-.film <название фильма>
-  © [cHAuHaN](http://t.me/amnd33p)"""
+.kino <название фильма>
+  © [cHAuHaN](https://t.me/leftparadox)"""
 
 import requests
-import bs4
 import re
 from telethon import events
 from uniborg.util import *
 
-@borg.on(events.NewMessage(outgoing=True,pattern='.film (.*)'))
+@borg.on(events.NewMessage(outgoing=True,pattern='.kino (.*)'))
 
-@borg.on(events.MessageEdited(outgoing=True,pattern='.film (.*)'))
+@borg.on(events.MessageEdited(outgoing=True,pattern='.kino (.*)'))
 
 @borg.on(events.NewMessage(outgoing=True,pattern='.tv (.*)'))
 
@@ -93,11 +92,11 @@ async def imdb(e):
                   '</code>\n<b>Сценарист : </b><code>'+writer+
                   '</code>\n<b>Звёзды : </b><code>'+stars+
                   '</code>\n<b>IMDB ссылка : </b>'+mov_link+
-                  '\n\n<b>Держи пёселя : </b> <a href="https://www.unn.com.ua/uploads/assets/images/%D0%92%D0%B5%D0%BB%D1%8C%D1%88-%D0%BA%D0%BE%D1%80%D0%B3%D0%B8%20%D0%BF%D0%B5%D0%BC%D0%B1%D1%80%D0%BE%D0%BA.jpg">Пёсель</a>'+
-                  '\n\n===> Приятного дня! <===',
+                  '\n\n<b>Создатель : </b> <a href="https://t.me/leftparadox">Создатель</a>'+
+                  '\n\n===>Создатель @leftparadox<===',
                   link_preview = True , parse_mode = 'HTML'
                   )
         except IndexError:
-            await e.edit("Хьюстон, результатов не найдено. Пожалуйста, введи ** Правильное название фильма / сериала **")
+            await e.edit("Результатов не найдено. Пожалуйста, введи ** Правильное название фильма / сериала **")
         except Exception as err:
-            await e.edit("Хьюстон, произошла некая ошибка:- "+str(err))
+            await e.edit("Произошла некая ошибка:- "+str(err))
