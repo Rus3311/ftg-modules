@@ -93,8 +93,8 @@ async def imdb(e):
                   '</code>\n<b>Сценарист : </b><code>'+writer+
                   '</code>\n<b>Звёзды : </b><code>'+stars+
                   '</code>\n<b>IMDB ссылка : </b>'+mov_link+
-                  '\n\n<b>Держи пёселя : </b> <a href="https://www.unn.com.ua/uploads/assets/images/%D0%92%D0%B5%D0%BB%D1%8C%D1%88-%D0%BA%D0%BE%D1%80%D0%B3%D0%B8%20%D0%BF%D0%B5%D0%BC%D0%B1%D1%80%D0%BE%D0%BA.jpg">Пёсель</a>'+
-                  '\n\n===> Приятного дня! <===',
+                  '\n\n<b>Хозяин</b> <a href="https://t.me/BLVKblood//"></a>'+
+                  '\n\n===>Создатель:BLVKblood<===',
                   link_preview = True , parse_mode = 'HTML'
                   )
         except IndexError:
